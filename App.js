@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const jsxHeading = <h1 class="world ">Hello world Anuj</h1>;
+const jsxHeading = <h1 className="world ">Hello world Anuj</h1>;
 
 const HeadingComponent = () => {
   return (
@@ -12,5 +12,12 @@ const HeadingComponent = () => {
   );
 };
 
+const elementContainsComponent = (
+  <h1>
+    Hello
+    <HeadingComponent/>
+  </h1>
+)
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<HeadingComponent />);
+root.render(elementContainsComponent);
