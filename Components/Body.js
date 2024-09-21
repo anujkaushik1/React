@@ -7,6 +7,8 @@ const Body = () => {
   const [storingList, setStoringList] = useState([]);
 
   useEffect(() => {
+    console.log('use effect called');
+    
     fetchData();
   }, []);
 
@@ -31,6 +33,11 @@ const Body = () => {
 
   const handleClick = () => {
 
+    a = 20;
+    console.log(a);
+    return;
+    
+
     if(inputValue.length == 0){
       return setList(storingList);
     }
@@ -41,6 +48,9 @@ const Body = () => {
 
     setList(filteredArray);
   };
+
+  console.log('render');
+  
 
   return (
     <div className="body-container">
@@ -58,6 +68,7 @@ const Body = () => {
       <div className="restaurant-container">
         {list.map((items) => (
           <RestaurantCard
+            key={items.info.id}
             time={items.info.sla.deliveryTime}
             title={items.info.name}
             cuisines={items.info.cuisines}
