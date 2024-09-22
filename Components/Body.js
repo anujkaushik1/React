@@ -5,6 +5,7 @@ const Body = () => {
   const [list, setList] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [storingList, setStoringList] = useState([]);
+  
 
   useEffect(() => {
     console.log('use effect called');
@@ -33,10 +34,6 @@ const Body = () => {
 
   const handleClick = () => {
 
-    a = 20;
-    console.log(a);
-    return;
-    
 
     if(inputValue.length == 0){
       return setList(storingList);
@@ -48,8 +45,6 @@ const Body = () => {
 
     setList(filteredArray);
   };
-
-  console.log('render');
   
 
   return (

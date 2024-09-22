@@ -6,11 +6,13 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import Error from "./Components/Error";
+import AboutClass from "./Components/AboutClass";
 
 const AppLayout = () => {
   return (
     <div>
       <Header />
+      <AboutClass name = 'Props Name testing'/>
       <Outlet/>
     </div>
   );
