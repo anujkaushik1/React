@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./Restaurant";
+import AboutClass from "./AboutClass";
 
 const Body = () => {
   const [list, setList] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [storingList, setStoringList] = useState([]);
+
+  const [inte, setinte] = useState(true);
   
 
   useEffect(() => {
-    console.log('use effect called');
+    // console.log('use effect called');
     
     fetchData();
   }, []);
@@ -33,7 +36,9 @@ const Body = () => {
   };
 
   const handleClick = () => {
+    setinte(!inte)
 
+    return;
 
     if(inputValue.length == 0){
       return setList(storingList);
@@ -47,8 +52,17 @@ const Body = () => {
   };
   
 
+  // console.log('render');
+  
+
   return (
     <div className="body-container">
+      {/* {
+        inte &&
+   <AboutClass name = 'Child 1'/>
+
+      } */}
+
       <div className="btn-search-container">
         <input
           onChange={(e) => setInputValue(e.target.value)}

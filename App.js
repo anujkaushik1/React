@@ -12,7 +12,7 @@ const AppLayout = () => {
   return (
     <div>
       <Header />
-      <AboutClass name = 'Props Name testing'/>
+      {/* <AboutClass name = 'Child 2'/>  */}
       <Outlet/>
     </div>
   );

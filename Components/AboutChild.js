@@ -1,37 +1,34 @@
 
 import React from "react";
-import AboutChild from "./AboutChild";
-class AboutClass extends React.Component{
+class AboutChild extends React.Component{
 
     constructor(props){
-        console.log('constrc');
-        
         super(props);
         this.state = {
             count:2,
             lastName: "kaushik state"
         }
 
+        console.log('constucrr aboutchild called', this.props.name);
         
         
     }
 
     componentDidMount(){
-        console.log('did');
+        console.log('did aboutchild callled', this.props.name);
+        this.setState({name : 'hahjajhj'})
+
         
     }
 
     componentDidUpdate(){
-        
-    }
+        console.log('didupdate aboutchild callled', this.props.name);
 
-    componentWillUnmount(){
-        console.log('unmounted');
         
     }
 
     render(){
-        console.log('render22222222222');
+        console.log('reneder aboutchild called', this.props.name);
 
         const {name} = this.props;
         const {count} = this.state;
@@ -47,4 +44,4 @@ class AboutClass extends React.Component{
 
 }
 
-export default AboutClass;
+export default AboutChild;
