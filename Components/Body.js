@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./Restaurant";
 import AboutClass from "./AboutClass";
 import useRestaurantData from "../utils/useRestaurantData";
+import useOnlineOfflineStatus from "../utils/useOnlineOfflineStatus";
 
 const Body = () => {
   const [inputValue, setInputValue] = useState("");
 
   const { list: storingList } = useRestaurantData();
+  const onlineOfflineState = useOnlineOfflineStatus();
+  
   
 
   const [list, setList] = useState(storingList);
@@ -32,6 +35,10 @@ const Body = () => {
   };
 
   console.log('render');
+
+  if(!onlineOfflineState){
+    return <h1>App is Offline</h1>
+  }
 
   return (
     <div className="body-container">
