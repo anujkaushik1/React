@@ -1,46 +1,26 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./Restaurant";
 import AboutClass from "./AboutClass";
+import useRestaurantData from "../utils/useRestaurantData";
 
 const Body = () => {
-  const [list, setList] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [storingList, setStoringList] = useState([]);
 
-  const [inte, setinte] = useState(true);
+  const { list: storingList } = useRestaurantData();
   
 
-  useEffect(() => {
-    // console.log('use effect called');
-    
-    fetchData();
-  }, []);
+  const [list, setList] = useState(storingList);
 
-  const fetchData = async () => {
-    try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
-      const jsonData = await data.json();
-      setList(
-        jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || []
-      );
-      setStoringList(
-        jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || []
-      );
-    } catch (error) {
-      console.log("error: ", error);
-    }
-  };
+
+
+  useEffect(() => {
+    console.log('use effect');
+    
+    setList(storingList);
+  }, [storingList]);
 
   const handleClick = () => {
-    setinte(!inte)
-
-    return;
-
-    if(inputValue.length == 0){
+    if (inputValue.length == 0) {
       return setList(storingList);
     }
 
@@ -50,10 +30,8 @@ const Body = () => {
 
     setList(filteredArray);
   };
-  
 
-  // console.log('render');
-  
+  console.log('render');
 
   return (
     <div className="body-container">
@@ -73,6 +51,7 @@ const Body = () => {
           Filter Data
         </button>
       </div>
+
 
       <div className="restaurant-container">
         {list.map((items) => (
