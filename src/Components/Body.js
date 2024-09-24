@@ -1,24 +1,22 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./Restaurant";
 import AboutClass from "./AboutClass";
-import useRestaurantData from "../utils/useRestaurantData";
-import useOnlineOfflineStatus from "../utils/useOnlineOfflineStatus";
+import useRestaurantData from "../../utils/useRestaurantData";
+import useOnlineOfflineStatus from "../../utils/useOnlineOfflineStatus";
 
 const Body = () => {
   const [inputValue, setInputValue] = useState("");
 
   const { list: storingList } = useRestaurantData();
+
+  console.log('anuj storing list: ', storingList);
+  
+
   const onlineOfflineState = useOnlineOfflineStatus();
   
-  
-
   const [list, setList] = useState(storingList);
 
-
-
-  useEffect(() => {
-    console.log('use effect');
-    
+  useEffect(() => {    
     setList(storingList);
   }, [storingList]);
 
@@ -34,7 +32,7 @@ const Body = () => {
     setList(filteredArray);
   };
 
-  console.log('render');
+  console.log('render == ', list);
 
   if(!onlineOfflineState){
     return <h1>App is Offline</h1>
