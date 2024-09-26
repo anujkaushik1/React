@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./Restaurant";
+import RestaurantCard, { withPrefferedLabelRestaurantCard } from "./Restaurant";
 import AboutClass from "./AboutClass";
 import useRestaurantData from "../../utils/useRestaurantData";
 import useOnlineOfflineStatus from "../../utils/useOnlineOfflineStatus";
@@ -9,14 +9,14 @@ const Body = () => {
 
   const { list: storingList } = useRestaurantData();
 
-  console.log('anuj storing list: ', storingList);
-  
-
   const onlineOfflineState = useOnlineOfflineStatus();
-  
+
   const [list, setList] = useState(storingList);
 
-  useEffect(() => {    
+  const RestaurantCardPreffered =
+    withPrefferedLabelRestaurantCard(RestaurantCard);
+
+  useEffect(() => {
     setList(storingList);
   }, [storingList]);
 
@@ -32,14 +32,11 @@ const Body = () => {
     setList(filteredArray);
   };
 
-  console.log('render == ', list);
-
-  if(!onlineOfflineState){
-    return <h1>App is Offline</h1>
+  if (!onlineOfflineState) {
+    return <h1>App is Offline</h1>;
   }
-
   return (
-    <div className="body-container">
+    <div className="px-4">
       {/* {
         inte &&
    <AboutClass name = 'Child 1'/>
@@ -48,26 +45,39 @@ const Body = () => {
 
       <div className="btn-search-container">
         <input
+          className="border-2 p-2 rounded-md"
           onChange={(e) => setInputValue(e.target.value)}
           value={inputValue}
           placeholder="Search an Item"
         ></input>
-        <button onClick={handleClick} className="filter-data-btn">
+        <button
+          onClick={handleClick}
+          className="ml-5 bg-blue-200 p-2 rounded-md"
+        >
           Filter Data
         </button>
       </div>
 
-
-      <div className="restaurant-container">
-        {list.map((items) => (
-          <RestaurantCard
-            key={items.info.id}
-            time={items.info.sla.deliveryTime}
-            title={items.info.name}
-            cuisines={items.info.cuisines}
-            rating={items.info.avgRating}
-          />
-        ))}
+      <div className="flex flex-wrap justify-between mt-10">
+        {list.map((items) =>
+          true ? (
+            <RestaurantCardPreffered
+              key={items.info.id}
+              time={items.info.sla.deliveryTime}
+              title={items.info.name}
+              cuisines={items.info.cuisines}
+              rating={items.info.avgRating}
+            />
+          ) : (
+            <RestaurantCard
+              key={items.info.id}
+              time={items.info.sla.deliveryTime}
+              title={items.info.name}
+              cuisines={items.info.cuisines}
+              rating={items.info.avgRating}
+            />
+          )
+        )}
       </div>
     </div>
   );
