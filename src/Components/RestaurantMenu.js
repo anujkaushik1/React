@@ -11,6 +11,10 @@ const RestaurantMenu = ({ menu = [], showIndex, setShowIndex }) => {
             <RestaurantAccoridan
               setShowIndex={(childData) => {
                 console.log('data coming from child = ', childData);
+
+                if(idx == showIndex){
+                  return setShowIndex(null);
+                }
                 
                 setShowIndex(idx);
               }}
