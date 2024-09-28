@@ -1,4 +1,11 @@
+import { useContext } from "react";
+import UserContext from "../../context/UserContext";
+
 const RestaurantCard = ({ title, cuisines, rating, time }) => {
+
+  const {loggedInUser} = useContext(UserContext);
+  
+
   return (
     <div className="bg-gray-200 flex flex-col items-center w-80 min-h-96 mb-12  text-center py-5 hover:bg-gray-300">
       <img
@@ -9,6 +16,7 @@ const RestaurantCard = ({ title, cuisines, rating, time }) => {
       <h4 className="flex flex-wrap break-words">{cuisines.join(", ")}</h4>
       <h4>{rating}</h4>
       <h4>{time}</h4>
+      <h4>{loggedInUser}</h4>
     </div>
   );
 };

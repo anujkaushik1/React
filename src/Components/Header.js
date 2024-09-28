@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 export const Header = () => {
+
+  const {loggedInUser} = useContext(UserContext);
   return (
     <div className="flex w-full justify-between items-center border-2 border-gray-50 mt-0">
       <img
@@ -23,6 +27,9 @@ export const Header = () => {
           </li>
           <li className="mx-4">
             <Link to={"/grocery"}>Grocery </Link>
+          </li>
+          <li className="mx-4">
+            {loggedInUser}
           </li>
         </ul>
       </div>

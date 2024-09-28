@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantCard, { withPrefferedLabelRestaurantCard } from "./Restaurant";
 import AboutClass from "./AboutClass";
 // import useOnlineOfflineStatus from "../../utils/useOnlineOfflineStatus";
 import { Link } from "react-router-dom";
 import useOnlineOfflineStatus from "../hooks/useOnlineOfflineStatus";
 import useRestaurantData from "../hooks/useRestaurantData";
+import UserContext from "../../context/UserContext";
 
 const Body = () => {
   const [inputValue, setInputValue] = useState("");
@@ -12,6 +13,7 @@ const Body = () => {
   const { list: storingList } = useRestaurantData();
 
   const onlineOfflineState = useOnlineOfflineStatus();
+  const {loggedInUser, setUserName = () => {}} = useContext(UserContext);
 
   const [list, setList] = useState(storingList);
 
@@ -45,7 +47,7 @@ const Body = () => {
 
       } */}
 
-      <div className="btn-search-container">
+      <div className="btn-search-container ">
         <input
           className="border-2 p-2 rounded-md"
           onChange={(e) => setInputValue(e.target.value)}
@@ -58,6 +60,12 @@ const Body = () => {
         >
           Filter Data
         </button>
+
+        <input
+          className="border-2 p-2 rounded-md m-10"
+          value={loggedInUser}
+          onChange={(e) => setUserName(e.target.value)}
+        ></input>
       </div>
 
       <div className="flex flex-wrap justify-between mt-10">

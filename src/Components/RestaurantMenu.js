@@ -13,7 +13,7 @@ const RestaurantMenu = ({ menu = [], showIndex, setShowIndex }) => {
                 console.log('data coming from child = ', childData);
 
                 if(idx == showIndex){
-                  return setShowIndex(null);
+                  return setShowIndex(null); 
                 }
                 
                 setShowIndex(idx);
