@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 // import useRestaurantItem from "../../utils/useRestaurantItem";
 import { RestaurantInfo } from "./RestaurantInfo";
@@ -9,16 +9,21 @@ const RestaurantItem = () => {
   const { id } = useParams();
   const { restaurantItem } = useRestaurantItem({ restaurantId: id });
 
+  const [showIndex, setShowIndex] = useState(0);
+
   const restaurantInfo = restaurantItem?.cards?.[2]?.card?.card?.info || {};
 
   const restaurantMenu =
     restaurantItem?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
-    
 
   return (
     <div>
       <RestaurantInfo info={restaurantInfo} />
-      <RestaurantMenu menu={restaurantMenu} />
+      <RestaurantMenu
+        showIndex={showIndex}
+        setShowIndex={setShowIndex}
+        menu={restaurantMenu}
+      />
     </div>
   );
 };

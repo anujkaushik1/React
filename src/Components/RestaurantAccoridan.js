@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import ItemsList from "./ItemsList";
 
-const RestaurantAccoridan = ({ cardData }) => {
-  const [isAccoridanClicked, setIsAccoridanClicked] = useState(true);
+const RestaurantAccoridan = ({ cardData, showCard = true, setShowIndex }) => {
 
   const handleClick = () => {
-    setIsAccoridanClicked(!isAccoridanClicked);
+    setShowIndex('i am sending parent data');
   };
 
   return (
@@ -19,11 +18,11 @@ const RestaurantAccoridan = ({ cardData }) => {
             {cardData?.title} ({cardData?.itemCards?.length})
           </h1>
           <h1 className="text-[30px] font-bold font-sans">
-            {isAccoridanClicked ? "↑" : "↓"}
+            {showCard ? "↑" : "↓"}
           </h1>
         </div>
 
-        {isAccoridanClicked && <ItemsList items={cardData?.itemCards} />}
+        {showCard && <ItemsList items={cardData?.itemCards} />}
       </div>
     </div>
   );
