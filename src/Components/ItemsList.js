@@ -8,20 +8,23 @@ const ItemsList = ({ items = [] }) => {
       item?.card?.info?.price || item?.card?.info?.defaultPrice || {};
 
     return (
-      <div className="mb-10">
-        <div className="flex">
-          <div className="w-[30%]">
+      <div className="mb-10 flex border-1 py-4 px-2">
+        <div className="w-full">
+          <div className="w-full flex flex-row">
             <h2 className="font-sans text-lg">{name}</h2>
             <h2 className="font-sans text-lg font-semibold ml-1">
               - ₹ {itemPrice / 100}
             </h2>
           </div>
-
-          <div className="w-full flex justify-end">
-            <img className="w-[20%] h-16 rounded-md" src={`${CDN_URL}/${imageId}`} />
-          </div>
+          <h3 className="mt-2 text-xs leading-4">{description}</h3>
         </div>
-        <h3 className="mt-2 text-xs">{description}</h3>
+
+        <div className="flex justify-end  w-[20%]">
+          <img
+            className="h-auto rounded-md"
+            src={`${CDN_URL}/${imageId}`}
+          />
+        </div>
       </div>
     );
   });

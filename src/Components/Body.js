@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import RestaurantCard, { withPrefferedLabelRestaurantCard } from "./Restaurant";
 import AboutClass from "./AboutClass";
-import useRestaurantData from "../../utils/useRestaurantData";
-import useOnlineOfflineStatus from "../../utils/useOnlineOfflineStatus";
+// import useOnlineOfflineStatus from "../../utils/useOnlineOfflineStatus";
 import { Link } from "react-router-dom";
+import useOnlineOfflineStatus from "../hooks/useOnlineOfflineStatus";
+import useRestaurantData from "../hooks/useRestaurantData";
 
 const Body = () => {
   const [inputValue, setInputValue] = useState("");
