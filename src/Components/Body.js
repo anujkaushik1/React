@@ -3,6 +3,7 @@ import RestaurantCard, { withPrefferedLabelRestaurantCard } from "./Restaurant";
 import AboutClass from "./AboutClass";
 import useRestaurantData from "../../utils/useRestaurantData";
 import useOnlineOfflineStatus from "../../utils/useOnlineOfflineStatus";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [inputValue, setInputValue] = useState("");
@@ -59,25 +60,27 @@ const Body = () => {
       </div>
 
       <div className="flex flex-wrap justify-between mt-10">
-        {list.map((items) =>
-          true ? (
-            <RestaurantCardPreffered
-              key={items.info.id}
-              time={items.info.sla.deliveryTime}
-              title={items.info.name}
-              cuisines={items.info.cuisines}
-              rating={items.info.avgRating}
-            />
-          ) : (
-            <RestaurantCard
-              key={items.info.id}
-              time={items.info.sla.deliveryTime}
-              title={items.info.name}
-              cuisines={items.info.cuisines}
-              rating={items.info.avgRating}
-            />
-          )
-        )}
+        {list.map((items) => (
+          <Link to={`/restaurant/${items.info.id}`}>
+            {items.info.preffered ? (
+              <RestaurantCardPreffered
+                key={items.info.id}
+                time={items.info.sla.deliveryTime}
+                title={items.info.name}
+                cuisines={items.info.cuisines}
+                rating={items.info.avgRating}
+              />
+            ) : (
+              <RestaurantCard
+                key={items.info.id}
+                time={items.info.sla.deliveryTime}
+                title={items.info.name}
+                cuisines={items.info.cuisines}
+                rating={items.info.avgRating}
+              />
+            )}
+          </Link>
+        ))}
       </div>
     </div>
   );

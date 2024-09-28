@@ -7,6 +7,7 @@ import About from "./src/Components/About";
 import Contact from "./src/Components/Contact";
 import Error from "./src/Components/Error";
 import AboutClass from "./src/Components/AboutClass";
+import RestaurantItem from "./src/Components/RestaurantItem";
 // import Grocery from "./Components/Grocery";
 const Grocery = lazy(() => import('./src/Components/Grocery'));
 
@@ -32,6 +33,8 @@ const appRouter = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/grocery", element: <Suspense fallback = {<h1>Fallback running for Grocery.....</h1>}><Grocery /></Suspense> },
+      { path: "/restaurant/:id", element: <RestaurantItem /> },
+
     ],
   },
   {
