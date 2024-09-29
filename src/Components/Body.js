@@ -51,6 +51,7 @@ const Body = () => {
       <div className="btn-search-container ">
         <input
           className="border-2 p-2 rounded-md"
+          data-testid = "search_test"
           onChange={(e) => setInputValue(e.target.value)}
           value={inputValue}
           placeholder="Search an Item"

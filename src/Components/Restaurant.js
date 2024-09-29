@@ -2,12 +2,13 @@ import { useContext } from "react";
 import UserContext from "../../context/UserContext";
 
 const RestaurantCard = ({ title, cuisines, rating, time }) => {
-
-  const {loggedInUser} = useContext(UserContext);
-  
+  const { loggedInUser } = useContext(UserContext);
 
   return (
-    <div className="bg-gray-200 flex flex-col items-center w-80 min-h-96 mb-12  text-center py-5 hover:bg-gray-300">
+    <div
+      data-testid="rescard"
+      className="bg-gray-200 flex flex-col items-center w-80 min-h-96 mb-12  text-center py-5 hover:bg-gray-300"
+    >
       <img
         className="w-72"
         src="https://i.pinimg.com/474x/de/79/bb/de79bb3fcae9d0e4d80ab5aa581cfd5e.jpg"
@@ -31,7 +32,5 @@ export const withPrefferedLabelRestaurantCard = (RestaurantCard = () => {}) => {
     );
   };
 };
-
-
 
 export default RestaurantCard;
