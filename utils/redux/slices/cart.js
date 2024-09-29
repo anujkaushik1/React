@@ -8,6 +8,8 @@ const cartSlice = createSlice({
 
     reducers: {
         addItem: (state, action) => {
+            console.log('anuj action = ', action);
+            
             state.items.push(action.payload);
         },
         removeItem: (state) => {

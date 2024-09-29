@@ -3,7 +3,7 @@ import { CDN_URL } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../utils/redux/slices/cart";
 
-const ItemsList = ({ items = [] }) => {
+const ItemsList = ({ items = [], onClick = null }) => {
   const dispatch = useDispatch();
 
   const handleAddCart = (cartItem) => {
@@ -17,7 +17,14 @@ const ItemsList = ({ items = [] }) => {
 
     return (
       <div
-        onClick={() => handleAddCart(item)}
+        onClick={() => {
+          if(typeof onClick == 'function'){
+            onClick();
+          }
+          else{
+            handleAddCart(item);
+          }
+        }}
         className="mb-10 flex border-1 py-4 px-2"
       >
         <div className="w-full">

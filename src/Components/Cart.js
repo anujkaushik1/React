@@ -9,7 +9,7 @@ const Cart = () => {
   return (
     <div className='flex items-center flex-col'>
 
-        <ItemsList items={cartItems}/>        
+        <ItemsList onClick={() => {}} items={cartItems}/>        
 
     </div>
   )
