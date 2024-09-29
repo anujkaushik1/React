@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ export const Header = () => {
 
   const {loggedInUser} = useContext(UserContext);
   const cartItems = useSelector((store) => store.cart.items);
+  const [login, setLogin] = useState(true);
 
   
 
@@ -33,10 +34,15 @@ export const Header = () => {
           <li className="mx-4">
             <Link to={"/grocery"}>Grocery </Link>
           </li>
-          <li className="mx-4">
+          <li className="">
             {loggedInUser}
           </li>
         </ul>
+
+        <button onClick={() => setLogin(!login)}>
+          {login ? 'Login' : 'Logout'}
+        </button>
+
       </div>
     </div>
   );

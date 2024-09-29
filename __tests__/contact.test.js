@@ -29,7 +29,6 @@ test("Testing all input loaded", () => {
     render(<Contact/>)
 
     const inputBoxesArray = screen.getAllByRole("textbox");
-    console.log(inputBoxesArray);
     
 
     expect(inputBoxesArray.length).toBe(2)
