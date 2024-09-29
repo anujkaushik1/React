@@ -23,6 +23,7 @@ const Body = () => {
   useEffect(() => {
     setList(storingList);
   }, [storingList]);
+  
 
   const handleClick = () => {
     if (inputValue.length == 0) {

@@ -9,6 +9,9 @@ import Error from "./src/Components/Error";
 import AboutClass from "./src/Components/AboutClass";
 import RestaurantItem from "./src/Components/RestaurantItem";
 import UserContext from "./context/UserContext";
+import { Provider } from "react-redux";
+import appSore from "./utils/redux/appStore";
+import Cart from "./src/Components/Cart";
 // import Grocery from "./Components/Grocery";
 const Grocery = lazy(() => import("./src/Components/Grocery"));
 
@@ -16,15 +19,15 @@ const AppLayout = () => {
   const [userName, setUserName] = useState("Default User");
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div>
-        <UserContext.Provider value={{ loggedInUser: 'Nested Name Which cant be changed' }}>
+    <Provider store={appSore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div>
           <Header />
-        </UserContext.Provider>
-        {/* <AboutClass name = 'Child 2'/>  */}
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+          {/* <AboutClass name = 'Child 2'/>  */}
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -48,6 +51,7 @@ const appRouter = createBrowserRouter([
         ),
       },
       { path: "/restaurant/:id", element: <RestaurantItem /> },
+      { path: "/cart", element: <Cart /> },
     ],
   },
   {

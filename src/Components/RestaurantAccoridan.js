@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import ItemsList from "./ItemsList";
 
 const RestaurantAccoridan = ({ cardData, showCard = true, setShowIndex }) => {
-
   const handleClick = () => {
-    setShowIndex('i am sending parent data');
+    setShowIndex("i am sending parent data");
   };
 
   return (
     <div className="flex flex-col items-center mt-5 mb-20">
-      <div
-        onClick={handleClick}
-        className="w-[60%] min-h-10 rounded-lg shadow-md p-2  cursor-pointer"
-      >
-        <div className="flex justify-between">
+      <div className="w-[60%] min-h-10 rounded-lg shadow-md p-2  cursor-pointer">
+        <div onClick={handleClick} className="flex justify-between">
           <h1 className="text-lg font-bold font-sans">
             {cardData?.title} ({cardData?.itemCards?.length})
           </h1>

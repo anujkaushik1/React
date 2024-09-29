@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../context/UserContext";
-import TestContext from "../../context/TestContext";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
 
   const {loggedInUser} = useContext(UserContext);
-  const {loggedInUser: l} = useContext(TestContext);
+  const cartItems = useSelector((store) => store.cart.items);
+
+  
+
   return (
     <div className="flex w-full justify-between items-center border-2 border-gray-50 mt-0">
       <img
@@ -24,14 +27,14 @@ export const Header = () => {
           <li className="mx-4">
             <Link to={"/contact"}>Contact Us </Link>
           </li>
-          <li className="mx-4">
-            <Link to={"/card"}>Card </Link>
+          <li className="mx-4 font-semibold font-sans">
+            <Link to={"/cart"}>Cart ({cartItems.length}) </Link>
           </li>
           <li className="mx-4">
             <Link to={"/grocery"}>Grocery </Link>
           </li>
           <li className="mx-4">
-            {loggedInUser} ------------- {l}
+            {loggedInUser}
           </li>
         </ul>
       </div>
